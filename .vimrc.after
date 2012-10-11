@@ -1,3 +1,5 @@
+inoremap jk <esc>
+let NERDTreeShowHidden=1
 set colorcolumn=80
 highlight ColorColumn ctermbg=red ctermfg=white guibg=#592929
 color molokai
