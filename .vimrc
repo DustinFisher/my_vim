@@ -1,30 +1,36 @@
+runtime macros/matchit.vim
 set nocompatible      " Use vim, no vi defaults
-filetype off          " required by vundle
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle Manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " My Bundles
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-rails'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kikijump/tslime.vim'
-Bundle 'jgdavey/vim-turbux'
-Bundle 'tpope/vim-dispatch'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'juvenn/mustache.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-rails'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'kikijump/tslime.vim'
+Plugin 'jgdavey/vim-turbux'
+Plugin 'tpope/vim-dispatch'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slim-template/vim-slim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'dsawardekar/ember.vim'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'posva/vim-vue'
+Plugin 'slashmili/alchemist.vim'
 
 " Basic Setup
 set number            " Show line numbers
 set ruler             " Show line and column number
-syntax on        " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 
 " Whitespace
@@ -48,6 +54,7 @@ let mapleader=","
 inoremap jk <esc>
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.swp$']
 set colorcolumn=80
 highlight ColorColumn ctermbg=red ctermfg=white guibg=#592929
 colorscheme molokai
@@ -56,5 +63,15 @@ set term=screen-256color
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" Enable slim syntax highlight
+autocmd FileType slim setlocal foldmethod=indent
+autocmd BufNewFile,BufRead *.slim set filetype=slim
 
+" Enable handlebars syntax highlight
+au BufReadPost *.hbs set filetype=html.mustache syntax=html.mustache
+
+call vundle#end()
+
+syntax on
+filetype off
 filetype plugin indent on
